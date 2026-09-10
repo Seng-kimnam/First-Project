@@ -1,6 +1,9 @@
-# Profile Page
+# Title
+simple React profile page
+ 
+# Description
 
-A simple React profile page demonstrating components, props, and conditional rendering with a `StatusBadge` component.
+A  demonstrating components, props, and conditional rendering with a `StatusBadge` component.
 
 ## Setup
 

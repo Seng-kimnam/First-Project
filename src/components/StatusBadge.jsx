@@ -1,31 +1,18 @@
-const StatusBadge = ({ isAvailable }) => {
+const StatusBadge = ({ isAvailable , children }) => {
   return (
     <>
       <p>
         {isAvailable ? (
-          <span
-            style={{
-              backgroundColor: "green",
-              color: "white",
-              padding: "5px",
-              borderRadius: "5px",
-            }}
-          >
+          <span className="bg-green-500 text-white px-2 py-1 rounded">
             Open to work
           </span>
         ) : (
-          <span
-            style={{
-              backgroundColor: "gray",
-              color: "white",
-              padding: "5px",
-              borderRadius: "5px",
-            }}
-          >
+          <span className="bg-gray-500 text-white px-2 py-1 rounded">
             Busy learning
           </span>
         )}
       </p>
+      {children}
     </>
   );
 };

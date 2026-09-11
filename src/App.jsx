@@ -1,10 +1,11 @@
 import "./App.css";
-import ProfilePage from "./components/ProfilePage";
+import MainContent from "./components/MainContent";
+
 
 function App() {
   return (
     <>
-      <ProfilePage />
+      <MainContent />
     </>
   );
 }

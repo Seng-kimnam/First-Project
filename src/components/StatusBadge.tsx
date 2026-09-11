@@ -1,4 +1,11 @@
-const StatusBadge = ({ isAvailable , children }) => {
+import type { ReactNode } from "react";
+
+interface StatusBadgeProps {
+  isAvailable: boolean;
+  children?: ReactNode;
+}
+
+const StatusBadge = ({ isAvailable, children }: StatusBadgeProps) => {
   return (
     <>
       <p>

@@ -1,6 +1,13 @@
 import StatusBadge from "./StatusBadge";
 import ProjectsGrid from "./ProjectsGrid";
 
+interface Project {
+  id: number;
+  title: string;
+  description: string;
+  status: string;
+}
+
 const ProfilePage = () => {
   const name = "Seng Kimnam";
   const goal =
@@ -8,7 +15,7 @@ const ProfilePage = () => {
     "build good frontend applications, manage state with a state-management library, " +
     "and dive deep into React hooks.";
 
-  const projects = [
+  const projects: Project[] = [
     {
       id: 1,
       title: "Portfolio Site",
@@ -30,7 +37,7 @@ const ProfilePage = () => {
   ];
 
   return (
-  
+
     <section className="md:col-span-3 p-6 space-y-6">
       <h1 className="text-2xl font-bold text-foreground">
         My name is {name}

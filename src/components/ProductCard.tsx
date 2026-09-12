@@ -6,7 +6,7 @@ import {
   CardContent,
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { PublicProducts } from "./ProfilePage";
+import { DraftProduct, PublicProducts } from "./ProfilePage";
 
 export type StockStatus = "In Stock" | "Sold Out";
 
@@ -19,25 +19,30 @@ export interface Product {
 }
 
 interface ProductCardProps {
-  product: PublicProducts;
+  product: DraftProduct;
 }
 
 const ProductCard = ({ product }: ProductCardProps) => {
-  const { id, name, quantity, status } = product;
-
   return (
     <Card className="hover:shadow-md transition-shadow duration-200">
       <CardHeader>
-        <CardDescription className="text-xs">Product ID #{id}</CardDescription>
-        <CardTitle>{name}</CardTitle>
+        <CardDescription className="text-xs">
+          Product ID #{product?.id ?? "Unknown"}
+        </CardDescription>
+        <CardTitle>{product?.name ?? "Unknown"}</CardTitle>
       </CardHeader>
 
       <CardContent className="flex items-center justify-between">
         <span className="text-sm text-muted-foreground">
-          Qty: <span className="font-semibold text-foreground">{quantity}</span>
+          Qty:{" "}
+          <span className="font-semibold text-foreground">
+            {product?.quantity}
+          </span>
         </span>
-        <Badge variant={status === "In Stock" ? "default" : "destructive"}>
-          {status}
+        <Badge
+          variant={product?.status === "In Stock" ? "default" : "destructive"}
+        >
+          {product?.status ?? "Unknown"}
         </Badge>
       </CardContent>
     </Card>

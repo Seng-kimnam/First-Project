@@ -1,9 +1,9 @@
 import { useState } from "react";
 import ProductCard from "./ProductCard";
-import { PublicProducts } from "./ProfilePage";
+import { DraftProduct, PublicProducts } from "./ProfilePage";
 
 interface ProductsGridProps {
-  products: PublicProducts[];
+  products: DraftProduct[];
 }
 
 const ProductsGrid = ({ products }: ProductsGridProps) => {

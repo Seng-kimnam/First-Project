@@ -12,10 +12,11 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import type { Product, StockStatus } from "./ProductCard";
+import type {  StockStatus } from "./ProductCard";
+import { DraftProduct } from "./ProfilePage";
 
 interface ProductFormProps {
-  onProductCreated: (product: Omit<Product, "id">) => void;
+  onProductCreated: (product: Omit<DraftProduct, "id">) => void;
 }
 
 interface FieldErrors {
@@ -26,12 +27,14 @@ interface FieldErrors {
 export function ProductForm({ onProductCreated }: ProductFormProps) {
   const [open, setOpen] = useState(false);
   const [name, setName] = useState("");
+  const [internalCode, setInternalCode] = useState("");
   const [quantity, setQuantity] = useState("");
   const [status, setStatus] = useState<StockStatus>("In Stock");
   const [errors, setErrors] = useState<FieldErrors>({});
 
   const resetForm = () => {
     setName("");
+    setInternalCode("");
     setQuantity("");
     setStatus("In Stock");
     setErrors({});

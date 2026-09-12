@@ -13,7 +13,7 @@ interface Project {
   description: string;
   status: string;
 }
-
+export type DraftProduct = Partial<PublicProducts> & { internalCode: string };
 const ProfilePage = () => {
   const name = "Seng Kimnam";
   const goal =
@@ -51,10 +51,12 @@ const ProfilePage = () => {
     { id: 6, name: "Laptop Sleeve", quantity: 0, status: "Sold Out" },
   ];
 
-  const [products, setProducts] = useState<PublicProducts[]>(productList);
+  const [products, setProducts] = useState<DraftProduct[]>(
+    productList as DraftProduct[],
+  );
 
-  const handleProductCreated = (product: Omit<Product, "id">) => {
-    const newProduct: Product = {
+  const handleProductCreated = (product: Omit<DraftProduct, "id">) => {
+    const newProduct: DraftProduct = {
       id: products.length + 1,
       ...product,
     };

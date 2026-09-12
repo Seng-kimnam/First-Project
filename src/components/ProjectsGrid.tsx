@@ -5,6 +5,7 @@ interface Project {
   title: string;
   description: string;
   status: string;
+ 
 }
 
 interface ProjectsGridProps {

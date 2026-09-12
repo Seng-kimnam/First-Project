@@ -44,7 +44,7 @@ export function ProductForm({ onProductCreated }: ProductFormProps) {
     }
   };
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (event: React.ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     const newErrors: FieldErrors = {};
@@ -55,7 +55,11 @@ export function ProductForm({ onProductCreated }: ProductFormProps) {
       newErrors.name = "Product name is required.";
     }
 
-    if (quantity === "" || Number.isNaN(numericQuantity) || numericQuantity < 0) {
+    if (
+      quantity === "" ||
+      Number.isNaN(numericQuantity) ||
+      numericQuantity < 0
+    ) {
       newErrors.quantity = "Quantity must be a number of 0 or more.";
     }
 
@@ -65,7 +69,12 @@ export function ProductForm({ onProductCreated }: ProductFormProps) {
       return;
     }
 
-    onProductCreated({ name: trimmedName, quantity: numericQuantity, status });
+    onProductCreated({
+      name: trimmedName,
+      quantity: numericQuantity,
+      status,
+      internalCode: "",
+    });
     resetForm();
     setOpen(false);
     alert(`Product "${name}" created successfully!`);
@@ -146,12 +155,18 @@ export function ProductForm({ onProductCreated }: ProductFormProps) {
           <DialogFooter>
             <DialogClose
               render={
-                <Button className="cursor-pointer" type="button" variant="outline">
+                <Button
+                  className="cursor-pointer"
+                  type="button"
+                  variant="outline"
+                >
                   Cancel
                 </Button>
               }
             />
-            <Button className="cursor-pointer" type="submit">Create product</Button>
+            <Button className="cursor-pointer" type="submit">
+              Create product
+            </Button>
           </DialogFooter>
         </form>
       </DialogContent>

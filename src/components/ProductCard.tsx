@@ -6,6 +6,7 @@ import {
   CardContent,
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { PublicProducts } from "./ProfilePage";
 
 export type StockStatus = "In Stock" | "Sold Out";
 
@@ -14,10 +15,11 @@ export interface Product {
   name: string;
   quantity: number;
   status: StockStatus;
+  internalCode: string;
 }
 
 interface ProductCardProps {
-  product: Product;
+  product: PublicProducts;
 }
 
 const ProductCard = ({ product }: ProductCardProps) => {

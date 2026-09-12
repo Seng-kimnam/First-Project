@@ -5,6 +5,8 @@ import ProductsGrid from "./ProductsGrid";
 import { ProductForm } from "./ProductForm";
 import type { Product } from "./ProductCard";
 
+export type PublicProducts = Omit<Product, "internalCode">;
+
 interface Project {
   id: number;
   title: string;
@@ -40,15 +42,16 @@ const ProfilePage = () => {
       status: "Completed",
     },
   ];
-
-  const [products, setProducts] = useState<Product[]>([
+  const productList: PublicProducts[] = [
     { id: 1, name: "Wireless Headphones", quantity: 120, status: "In Stock" },
     { id: 2, name: "Mechanical Keyboard", quantity: 0, status: "Sold Out" },
     { id: 3, name: "USB-C Hub", quantity: 0, status: "Sold Out" },
     { id: 4, name: "Webcam HD", quantity: 45, status: "In Stock" },
     { id: 5, name: "Monitor Stand", quantity: 0, status: "Sold Out" },
     { id: 6, name: "Laptop Sleeve", quantity: 0, status: "Sold Out" },
-  ]);
+  ];
+
+  const [products, setProducts] = useState<PublicProducts[]>(productList);
 
   const handleProductCreated = (product: Omit<Product, "id">) => {
     const newProduct: Product = {

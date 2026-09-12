@@ -1,6 +1,6 @@
 import { useState } from "react";
 import ProductCard from "./ProductCard";
-import { DraftProduct, PublicProducts } from "./ProfilePage";
+import { DraftProduct } from "./ProfilePage";
 
 interface ProductsGridProps {
   products: DraftProduct[];
@@ -15,6 +15,8 @@ const ProductsGrid = ({ products }: ProductsGridProps) => {
   const filteredProductsInStock = inStockOnly
     ? products.filter((product) => product.status === "In Stock")
     : products;
+
+  
   return (
     <section aria-label="Products">
       <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
@@ -37,7 +39,7 @@ const ProductsGrid = ({ products }: ProductsGridProps) => {
         </p>
       </div>
       <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {filteredProductsInStock.map((product) => (
+        {filteredProductsInStock && filteredProductsInStock.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}
       </div>

@@ -1,4 +1,4 @@
-import { useState, type FormEvent } from "react";
+import { useState } from "react";
 import { Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -12,7 +12,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import type {  StockStatus } from "./ProductCard";
+import type { StockStatus } from "./ProductCard";
 import { DraftProduct } from "./ProfilePage";
 
 interface ProductFormProps {
@@ -27,14 +27,14 @@ interface FieldErrors {
 export function ProductForm({ onProductCreated }: ProductFormProps) {
   const [open, setOpen] = useState(false);
   const [name, setName] = useState("");
-  const [internalCode, setInternalCode] = useState("");
+  // const [internalCode, setInternalCode] = useState("");
   const [quantity, setQuantity] = useState("");
   const [status, setStatus] = useState<StockStatus>("In Stock");
   const [errors, setErrors] = useState<FieldErrors>({});
 
   const resetForm = () => {
     setName("");
-    setInternalCode("");
+    // setInternalCode("");
     setQuantity("");
     setStatus("In Stock");
     setErrors({});
@@ -105,7 +105,7 @@ export function ProductForm({ onProductCreated }: ProductFormProps) {
             <label htmlFor="product-name">Product name</label>
             <Input
               id="product-name"
-              value={name}
+              value={name ?? ""}
               aria-invalid={!!errors.name}
               onChange={(event) => {
                 setName(event.target.value);
@@ -127,7 +127,7 @@ export function ProductForm({ onProductCreated }: ProductFormProps) {
               id="product-amount"
               type="number"
               min="0"
-              value={quantity}
+              value={quantity ?? ""}
               aria-invalid={!!errors.quantity}
               onChange={(event) => {
                 setQuantity(event.target.value);
@@ -147,7 +147,7 @@ export function ProductForm({ onProductCreated }: ProductFormProps) {
             <label htmlFor="product-status">Status</label>
             <select
               id="product-status"
-              value={status}
+              value={status ?? "In Stock"}
               onChange={(event) => setStatus(event.target.value as StockStatus)}
               className="h-8 rounded-lg border border-input bg-transparent px-2.5 text-sm outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50"
             >

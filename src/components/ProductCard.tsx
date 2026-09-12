@@ -6,7 +6,7 @@ import {
   CardContent,
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { DraftProduct, PublicProducts } from "./ProfilePage";
+import { DraftProduct } from "./ProfilePage";
 
 export type StockStatus = "In Stock" | "Sold Out";
 
